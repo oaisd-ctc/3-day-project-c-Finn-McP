@@ -38,7 +38,7 @@ namespace Dilmon
             int num =1;
             if(!int.TryParse(userDilmonChoice, out num))
             {
-                Console.WriteLine("Jeff: Sorry, that was not a provided option. \nPlease enter which Dilmon you want to choose.");
+                Console.WriteLine("Jeff: Sorry, that was not a provided option.");
                 Thread.Sleep(2000);
                 Console.Clear();
                 DisplayStarters();
