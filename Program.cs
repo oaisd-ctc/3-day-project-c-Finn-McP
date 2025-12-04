@@ -45,6 +45,26 @@ public class Program
 
             if(userJeff == "1");
             {
+                Console.Clear();
+                Thread.Sleep(2000);
+                doorOpen();
+                Thread.Sleep(250);
+                Console.Clear();
+                doorOpen2();
+                Thread.Sleep(250);
+                Console.Clear();
+                doorOpen3();
+                Thread.Sleep(250);
+                Console.Clear();
+                doorOpen4();
+                Thread.Sleep(250);
+                Console.Clear();
+                doorOpen5();
+                Thread.Sleep(250);
+                Console.Clear();
+                doorOpen6();
+                Thread.Sleep(250);
+                Console.Clear();
                 Console.WriteLine("HEHE");
             }
         }
@@ -64,7 +84,7 @@ public class Program
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.Write("Loading ");
         Console.ForegroundColor = ConsoleColor.Green;
-        for(int i = 1; i <=45; i++)
+        for(int i = 1; i <=100; i++)
         {
             Console.Write("▅");
             Thread.Sleep(50);
@@ -106,19 +126,51 @@ public class Program
     {
         Console.WriteLine("""
          _______________
-        |               |
-        |               |
-        |               |
-        |               |
-        |               |
-        |           -0  |
-        |               |
-        |               |
-        |               |
-        |_______________|
+        |          |    |
+        |          |    |
+        |          |    |
+        |          |    |
+        |          |    |
+        |       -o |    |
+        |          |    |
+        |          |    |
+        |          |    |
+        |__________|____|
         """);
     }
     public static void doorOpen4()
+    {
+        Console.WriteLine("""
+         _______________
+        |       |       |
+        |       |       |
+        |       |       |
+        |       |       |
+        |       |       |
+        |    -o |       |
+        |       |       |
+        |       |       |
+        |       |       |
+        |_______|_______|
+        """);
+    }
+    public static void doorOpen5()
+    {
+        Console.WriteLine("""
+         _______________
+        |  |            |
+        |  |            |
+        |  |            |
+        |  |            |
+        |  |            |
+        |-o|            |
+        |  |            |
+        |  |            |
+        |  |            |
+        |__|____________|
+        """);
+    }
+    public static void doorOpen6()
     {
         Console.WriteLine("""
          _______________
@@ -127,7 +179,7 @@ public class Program
         |               |
         |               |
         |               |
-        |           -0  |
+        |               |
         |               |
         |               |
         |               |
