@@ -1,11 +1,15 @@
 ﻿
 using System;
+namespace Dilmon;
 
 public class Program
 {
     public static void Main(string[] args)
     {
+        Dilmon userDilmon = new Dilmon();
         Console.Clear();
+        Dilmon.DisplayStarters();
+        Thread.Sleep(3000);
         introTimer();
         Console.Clear();
         beginningThing();
