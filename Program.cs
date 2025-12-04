@@ -1,5 +1,6 @@
 ﻿
 using System;
+namespace Dilmon;
 
 public class Program
 {
