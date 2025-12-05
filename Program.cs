@@ -7,9 +7,13 @@ public class Program
     public static void Main(string[] args)
     {
         Console.Clear();
+        Console.WriteLine("Welcome to the adventures of DILMON! Please be patient as the game loads.\n");
+        Thread.Sleep(2000);
+        Console.Clear();
         introTimer();
         Console.Clear();
         beginningThing();
+        Dilmon.RenameDilmon();
     }
     public static void beginningThing()
     {
@@ -19,10 +23,10 @@ public class Program
         Console.WriteLine("*As you walk near the town borders you see a man*\n");
         Console.ForegroundColor = ConsoleColor.Magenta;
         Thread.Sleep(1000);
-        Console.WriteLine("Jeff: Welcome traveler, it appears you have stumbled upon our humbled abode.\n");
+        Console.WriteLine("Unknown: Welcome traveler, it appears you have stumbled upon our humbled abode.\n");
         Console.ForegroundColor = ConsoleColor.Gray;
-        Console.WriteLine("1. Talk to Jeff       2. Stare at Jeff");
-        Console.WriteLine("3. Talk to someone else      4. Leave");
+        Console.WriteLine("1. Talk to Unknown         2. Stare at Unknown");
+        Console.WriteLine("3. Talk to someone else    4. Leave");
         Console.ForegroundColor = ConsoleColor.Cyan;
         string userInput = Console.ReadLine();
 
@@ -30,12 +34,12 @@ public class Program
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("User: Hello Jeff, what does this place have here?\n");
+            Console.WriteLine("User: I'm looking for the professor. Are you the professor?\n");
             Thread.Sleep(2000);
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("Jeff: Ah yes, you would like to know more about this place.");
+            Console.WriteLine("Jeff: Ah yes, I forgot to introduce myself.\nI'm professor Jeff Altum, you can just call me Jeff.");
             Thread.Sleep(2000);
-            Console.WriteLine("Before I talk more to you, give me your name");
+            Console.WriteLine("But before we continue, what might your name be?");
             Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("What would you like to name your character?");
@@ -43,11 +47,11 @@ public class Program
             Console.WriteLine($"Your name {userName}");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Thread.Sleep(1500);
-            Console.WriteLine($"Jeff: Amazing name {userName}");
+            Console.WriteLine($"Jeff: Amazing name, {userName}!");
             Thread.Sleep(1500);
             Console.WriteLine("This beautiful town is home to many people, including monsters.");
             Thread.Sleep(2000);
-            Console.WriteLine("Here, if you want to undetstand this better, I can show you around my house.\n");
+            Console.WriteLine("Here, if you want to undertstand this better, I can show you around my house.\n");
             Thread.Sleep(2000);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("1. Continue with Jeff        2. Talk to someone else");
@@ -90,7 +94,21 @@ public class Program
                 Thread.Sleep(2000);
                 Console.WriteLine("Jeff: I'm glad you asked! This box is a new technology that has revolutionized the game of DILMON");
                 Thread.Sleep(2000);
-                Console.WriteLine("Before I go into more detail, he is something cool.");
+                Console.WriteLine("Before I go into more detail, here's something I think you'll like.");
+                Thread.Sleep(1000);
+                Console.Write("These");
+                Thread.Sleep(500);
+                Console.Write(".");
+                Thread.Sleep(500);
+                Console.Write(".");
+                Thread.Sleep(500);
+                Console.Write(".");
+                Thread.Sleep(1000);
+                Console.WriteLine("\nThese are called DILMON");
+                Thread.Sleep(1000);
+                Console.WriteLine("You can choose any of these.");
+                Thread.Sleep(1000);
+                Dilmon.DisplayStarters();
             }
             else if(userJeff == "2")
             {
