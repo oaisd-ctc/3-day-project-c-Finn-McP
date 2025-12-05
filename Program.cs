@@ -9,7 +9,7 @@ public class Program
         Console.WriteLine("Welcome to the adventures of DILMON! Please be patient as the game loads.\n");
         Thread.Sleep(3000);
         Console.Clear();
-        //introTimer();
+        // introTimer();
         Console.Clear();
         beginningThing();
     }
@@ -56,6 +56,7 @@ public class Program
 
             if (userJeff == "1")
             {
+
                 Console.Clear();
                 Thread.Sleep(1000);
                 doorOpen();
@@ -81,6 +82,8 @@ public class Program
                 Thread.Sleep(2000);
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Jeff: Here is THE BOX!\n");
+                Thread.Sleep(2000);
+                theBox();
                 Thread.Sleep(2000);
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"{userName}: What does this box do?\n");
@@ -314,6 +317,22 @@ public class Program
         |_______________|
         """);
     }
+    public static void theBox()
+    {
+        Console.WriteLine("""
+         __________________
+        | ________________ |
+        ||       __       ||C]
+        ||     -|__|-     ||C]
+        ||________________||C]
+        |                  |
+        |                  |
+        |    88      88    |
+        |  88  88  88  88  |
+        |    88      88    |
+        |__________________|
+        """);
+    }
     public static void dotTimer()
     {
         for (int dot = 1; dot <= 3; dot++)
@@ -324,9 +343,13 @@ public class Program
     }
     public static void NameUser()
     {
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("What would you like to name your character?");
+        Console.ForegroundColor = ConsoleColor.Cyan;
         string enterUserName = Console.ReadLine();
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine($"Are you sure you want to be called {enterUserName}? Y/N");
+        Console.ForegroundColor = ConsoleColor.Cyan;
         string yesNoForName = Console.ReadLine();
         if (yesNoForName == "y")
         {
