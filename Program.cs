@@ -1,7 +1,6 @@
 ﻿
 using System;
 namespace Dilmon;
-
 public class Program
 {
     public static void Main(string[] args)
@@ -14,6 +13,7 @@ public class Program
         Console.Clear();
         beginningThing();
         Dilmon.RenameDilmon();
+        Dilmon.DiplayDilmonMoves();
     }
     public static void beginningThing()
     {
@@ -29,7 +29,6 @@ public class Program
         Console.WriteLine("3. Talk to someone else    4. Leave");
         Console.ForegroundColor = ConsoleColor.Cyan;
         string userInput = Console.ReadLine();
-
         if (userInput == "1")
         {
             Console.Clear();
@@ -150,10 +149,8 @@ public class Program
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("User: Wow man, its not that serious.\n");
             Thread.Sleep(2000);
-
             Random random = new Random();
             int jeffRandom = random.Next(1,3);
-
             if(jeffRandom == 1)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
@@ -195,7 +192,6 @@ public class Program
             Console.WriteLine("Drink Water :)");
             Thread.Sleep(4000);
             beginningThing();
-
         }
         else if (userInput == "4")
         {

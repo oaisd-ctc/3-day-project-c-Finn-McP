@@ -10,7 +10,6 @@ namespace Dilmon
         public Dilmon()
         {
         }
-        
         public static void DisplayStarters()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -25,8 +24,8 @@ namespace Dilmon
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"So? Which one will it be ?\nType 1 2 or 3");
             string userDilmonChoice = Console.ReadLine();
-            int num =1;
-            if(!int.TryParse(userDilmonChoice, out num))
+            int num = 1;
+            if (!int.TryParse(userDilmonChoice, out num))
             {
                 Console.WriteLine("Jeff: Sorry, that was not a provided option.");
                 Thread.Sleep(2000);
@@ -35,21 +34,21 @@ namespace Dilmon
             }
             else if (userDilmonChoice == "1")
             {
-                Console.WriteLine("BOX: Swiffy is the mossy swiflet DILMON. \nAre you sure you want to choose Swiffy? Y/N");
+                Console.WriteLine("BOX: Swiffy is the mossy swiflet DILMON. \nAre you sure you want to choose Swiffy? Y/N"); // evolves into Swiftler then Swifton
                 SetPlayerDilmonName("Swiffy");
                 ConfirmChoiceForDilmon();
                 SetRivalDilmonName(playerDilmonName);
             }
             else if (userDilmonChoice == "2")
             {
-                Console.WriteLine("BOX: Dil is the friendly fish DILMON. \nAre you sure you want to choose Dil? Y/N");
+                Console.WriteLine("BOX: Dil is the friendly fish DILMON. \nAre you sure you want to choose Dil? Y/N"); // evolves into Dilbert then Dilboretor
                 SetPlayerDilmonName("Dil");
                 ConfirmChoiceForDilmon();
                 SetRivalDilmonName(playerDilmonName);
             }
             else if (userDilmonChoice == "3")
             {
-                Console.WriteLine("BOX: Gangu is the firey kangaroo DILMON. \nAre you sure you want to choose Gangu? Y/N");
+                Console.WriteLine("BOX: Gangu is the firey kangaroo DILMON. \nAre you sure you want to choose Gangu? Y/N"); // evolves into Gangubud then Gangunade
                 SetPlayerDilmonName("Gangu");
                 ConfirmChoiceForDilmon();
                 SetRivalDilmonName(playerDilmonName);
@@ -64,6 +63,7 @@ namespace Dilmon
         }
         public static void RenameDilmon()
         {
+            Console.Clear();
             Console.WriteLine("BOX: Do you want to rename your DILMON? Y/N");
             string yesNoForRename = Console.ReadLine();
             if (yesNoForRename == "y")
@@ -109,7 +109,6 @@ namespace Dilmon
             {
                 rivalDilmonName = "Swiffy";
             }
-            
         }
         public string GetPlayerDilmonName()
         {
@@ -126,6 +125,49 @@ namespace Dilmon
             {
                 Console.Clear();
                 DisplayStarters();
+            }
+        }
+        public static void DiplayDilmonMoves()
+        {
+            string playerDilmonMove1 = "";
+            string playerDilmonMove2 = "";
+            string playerDilmonMove3 = "";
+            string playerDilmonMove4 = "";
+            if (playerDilmonName == "Swiffy")
+            {
+                playerDilmonMove1 = "Swift Sweep"; //normal type airial attack 
+                playerDilmonMove2 = "Leach Claw"; //grass type move that does damage and heals the user 
+                playerDilmonMove3 = "Tackle"; //basic normal type move
+                playerDilmonMove4 = "Photosynthesis"; //grass type move - takes a turn to heal (cannot do damage)
+                Console.WriteLine($""" 
+                Moves:
+                1. {playerDilmonMove1}  2. {playerDilmonMove2}
+                3. {playerDilmonMove3}  4. {playerDilmonMove4}
+                """);
+            }
+            else if (playerDilmonName == "Dil")
+            {
+                playerDilmonMove1 = "Tackle"; //basic normal type move
+                playerDilmonMove2 = "Rainy Skies"; //water type move - sets the weather to rainy and gives all water type moves a boost
+                playerDilmonMove3 = "Flop"; //water type move (no type other than water DILMON can learn this move) - rasies user's defense and atack at the risk of falling asleep
+                playerDilmonMove4 = "Coral Rain"; //watter type move - like stelth rock - any time a new DILMON enters they take damage (unavoidable but lasts for 4 turns)
+                Console.WriteLine($""" 
+                Moves:
+                1. {playerDilmonMove1}  2. {playerDilmonMove2}
+                3. {playerDilmonMove3}  4. {playerDilmonMove4}
+                """);
+            }
+            else if (playerDilmonName == "Gangu")
+            {
+                playerDilmonMove1 = "Tackle"; //basic normal type move
+                playerDilmonMove2 = "Flaming Boxer"; //Fire type move that boosts the user's fire type attacks
+                playerDilmonMove3 = "Meteor Punch"; //Fire type move (high crit chance but cannot be used twice in a row)
+                playerDilmonMove4 = "Ash Construct"; // Fire type move that boosts atk pwr but decreases speed
+                Console.WriteLine($""" 
+                Moves:
+                1. {playerDilmonMove1}  2. {playerDilmonMove2}
+                3. {playerDilmonMove3}  4. {playerDilmonMove4}
+                """);
             }
         }
     }
