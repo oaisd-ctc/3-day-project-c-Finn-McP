@@ -333,6 +333,79 @@ public class Program
         |__________________|
         """);
     }
+    public static void dilEvolution1()
+    {
+        Console.Write("""
+         _
+        | \______/\_____  
+        |            O  \ 
+        |                C
+        |  _|__|_  _____/ 
+        |_/      \/       
+        """);
+    }
+    public static void dilEvolution2()
+    {
+        Console.Write("""
+         __
+        || \______/\__________
+        ||                 O  \
+        ||                     C
+        ||  _||__||__  _______/
+        ||_/         \/
+        """);
+    }
+    public static void dilEvolution3()
+    {
+        Console.Write("""
+                               _____
+                              /  ___|-----
+         ___        __        | /
+        ||| \______//\\_______||____
+        |||                      O  \
+        |||                          C
+        |||  _|||__|||       _||____/
+        |||_/         \_\_/_/ |\___       
+                              |    |-----
+                              \____|-----
+        """);
+    }
+    public static void swiffyEvolution1()
+    {
+        Console.WriteLine("""
+        
+        """);       
+    }
+    public static void swiffyEvolution2()
+    {
+        Console.WriteLine("""
+        
+        """);       
+    }
+    public static void swiffyEvolution3()
+    {
+        Console.WriteLine("""
+        
+        """);       
+    }
+    public static void ganguEvolution1()
+    {
+        Console.WriteLine("""
+        
+        """);    
+    }
+    public static void ganguEvolution2()
+    {
+        Console.WriteLine("""
+        
+        """);    
+    }
+    public static void ganguEvolution3()
+    {
+        Console.WriteLine("""
+        
+        """);    
+    }
     public static void dotTimer()
     {
         for (int dot = 1; dot <= 3; dot++)
