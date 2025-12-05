@@ -127,7 +127,7 @@ namespace Dilmon
                 DisplayStarters();
             }
         }
-        public static void DiplayDilmonMoves()
+        public static void DisplayDilmonMoves()
         {
             string playerDilmonMove1 = "";
             string playerDilmonMove2 = "";
@@ -139,23 +139,13 @@ namespace Dilmon
                 playerDilmonMove2 = "Leach Claw"; //grass type move that does damage and heals the user 
                 playerDilmonMove3 = "Tackle"; //basic normal type move
                 playerDilmonMove4 = "Photosynthesis"; //grass type move - takes a turn to heal (cannot do damage)
-                Console.WriteLine($""" 
-                Moves:
-                1. {playerDilmonMove1}  2. {playerDilmonMove2}
-                3. {playerDilmonMove3}  4. {playerDilmonMove4}
-                """);
             }
             else if (playerDilmonName == "Dil")
             {
                 playerDilmonMove1 = "Tackle"; //basic normal type move
                 playerDilmonMove2 = "Rainy Skies"; //water type move - sets the weather to rainy and gives all water type moves a boost
-                playerDilmonMove3 = "Flop"; //water type move (no type other than water DILMON can learn this move) - rasies user's defense and atack at the risk of falling asleep
-                playerDilmonMove4 = "Coral Rain"; //watter type move - like stelth rock - any time a new DILMON enters they take damage (unavoidable but lasts for 4 turns)
-                Console.WriteLine($""" 
-                Moves:
-                1. {playerDilmonMove1}  2. {playerDilmonMove2}
-                3. {playerDilmonMove3}  4. {playerDilmonMove4}
-                """);
+                playerDilmonMove3 = "Flop"; //water type move (no type other than water DILMON can learn this move) - raises user's defense and atack at the risk of falling asleep
+                playerDilmonMove4 = "Coral Rain"; //water type move - like stelth rock - any time a new DILMON enters they take damage (unavoidable but lasts for 4 turns)
             }
             else if (playerDilmonName == "Gangu")
             {
@@ -163,12 +153,12 @@ namespace Dilmon
                 playerDilmonMove2 = "Flaming Boxer"; //Fire type move that boosts the user's fire type attacks
                 playerDilmonMove3 = "Meteor Punch"; //Fire type move (high crit chance but cannot be used twice in a row)
                 playerDilmonMove4 = "Ash Construct"; // Fire type move that boosts atk pwr but decreases speed
-                Console.WriteLine($""" 
-                Moves:
-                1. {playerDilmonMove1}  2. {playerDilmonMove2}
-                3. {playerDilmonMove3}  4. {playerDilmonMove4}
-                """);
             }
+            Console.WriteLine($""" 
+            Moves:
+            1. {playerDilmonMove1}  2. {playerDilmonMove2}
+            3. {playerDilmonMove3}  4. {playerDilmonMove4}
+            """);
         }
     }
 }

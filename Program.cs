@@ -1,19 +1,17 @@
-﻿
-using System;
+﻿using System;
 namespace Dilmon;
 public class Program
 {
+    public static string userName = " ";
     public static void Main(string[] args)
     {
         Console.Clear();
         Console.WriteLine("Welcome to the adventures of DILMON! Please be patient as the game loads.\n");
-        Thread.Sleep(2000);
+        Thread.Sleep(3000);
         Console.Clear();
-        introTimer();
+        //introTimer();
         Console.Clear();
         beginningThing();
-        Dilmon.RenameDilmon();
-        Dilmon.DiplayDilmonMoves();
     }
     public static void beginningThing()
     {
@@ -41,9 +39,7 @@ public class Program
             Console.WriteLine("But before we continue, what might your name be?");
             Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("What would you like to name your character?");
-            string userName = Console.ReadLine();
-            Console.WriteLine($"Your name {userName}");
+            NameUser();
             Console.ForegroundColor = ConsoleColor.Magenta;
             Thread.Sleep(1500);
             Console.WriteLine($"Jeff: Amazing name, {userName}!");
@@ -108,6 +104,8 @@ public class Program
                 Console.WriteLine("You can choose any of these.");
                 Thread.Sleep(1000);
                 Dilmon.DisplayStarters();
+                Dilmon.RenameDilmon(); 
+                Dilmon.DisplayDilmonMoves();
             }
             else if(userJeff == "2")
             {
@@ -322,6 +320,21 @@ public class Program
         {
             Console.Write(" . ");
             Thread.Sleep(1500);
+        }
+    }
+    public static void NameUser()
+    {
+        Console.WriteLine("What would you like to name your character?");
+        string enterUserName = Console.ReadLine();
+        Console.WriteLine($"Are you sure you want to be called {enterUserName}? Y/N");
+        string yesNoForName = Console.ReadLine();
+        if (yesNoForName == "y")
+        {
+            userName = enterUserName;
+        }
+        else
+        {
+            NameUser();
         }
     }
 }
