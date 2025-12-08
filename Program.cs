@@ -109,6 +109,8 @@ public class Program
                 Dilmon.DisplayStarters();
                 Dilmon.RenameDilmon(); 
                 Dilmon.DisplayDilmonMoves();
+                BattleScene.treeLeaves();
+                BattleScene.treeBark();
             }
             else if(userJeff == "2")
             {
@@ -337,7 +339,7 @@ public class Program
     {
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("""
-         _
+         _                
         | \______/\_____  
         |            O  \ 
         |                C
