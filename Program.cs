@@ -335,6 +335,7 @@ public class Program
     }
     public static void dilEvolution1()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("""
          _
         | \______/\_____  
@@ -346,6 +347,7 @@ public class Program
     }
     public static void dilEvolution2()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("""
          __
         || \______/\__________
@@ -357,6 +359,7 @@ public class Program
     }
     public static void dilEvolution3()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("""
                                _____
                               /  ___|-----
@@ -366,42 +369,79 @@ public class Program
         |||                          C
         |||  _|||__|||       _||____/
         |||_/         \_\_/_/ |\___       
-                              |    |-----
                               \____|-----
+                              
         """);
     }
     public static void swiffyEvolution1()
     {
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("""
-        
+                        \________
+                     ___\     __ |\
+                    |        | o|| >
+                    _\_          |/
+           _________|            /___________
+          /        /            /            |
+         /________/            /__          /
+                 /            /   \____    |
+                |            |___  _|  \___|
+                |           /    \|
+                /~~~~~~~~~~/
         """);       
     }
     public static void swiffyEvolution2()
     {
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("""
         
         """);       
     }
     public static void swiffyEvolution3()
     {
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("""
         
         """);       
     }
     public static void ganguEvolution1()
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("""
-        
+                                   __      __
+                                  |  |    /  |
+                                  |  |___|   |
+                                  \          \
+                         _________/           \__
+                        /                        \
+                      /                          /
+                     /                     ____/
+                    |                     |
+                   /                       \
+                  /                        |
+                 /                        /__
+                |                    |       \
+                |                    |\__     |
+                \         /     __   |   \___/
+                 \       /_    /  \  /
+                  \      | |   |   | |
+                   |    \  |   |___| /_______
+                   \     |   \_____|_________>
+                    \    \
+                     \    \___________________
+                      \______________________/     
         """);    
     }
     public static void ganguEvolution2()
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("""
         
         """);    
     }
     public static void ganguEvolution3()
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("""
         
         """);    
