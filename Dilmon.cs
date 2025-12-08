@@ -7,6 +7,22 @@ namespace Dilmon
         private static string playerDilmonName = " ";
         private static string rivalDilmonName = " ";
         public static string playersMonNameToDiplay = " ";
+        public static Random rnd = new Random();
+        public static int chancForCrit = rnd.Next(1, 101);
+        public static int chanceForMiss = rnd.Next(1, 201);
+        public static int enimyChanceForMiss = rnd.Next(1, 201);
+        public static int chanceForStatusEffect = rnd.Next(1, 11);
+        public static int enemyMoveSelect = rnd.Next(1, 5);
+        public static double playerDilmonHealth = 100;
+        public static double rivalDilmonHealth = 100;
+        public static double playerDilmonBaseHealth = 100;
+        public static double rivalDilmonBaseHealth = 100;
+        public static string rivalDilmonMove1 = "";
+        public static string rivalDilmonMove2 = "";
+        public static string rivalDilmonMove3 = "";
+        public static string rivalDilmonMove4 = "";
+        public double strengthMultiplyer = 1;
+
         public Dilmon()
         {
         }
@@ -42,6 +58,8 @@ namespace Dilmon
                 SetPlayerDilmonName("Swiffy");
                 ConfirmChoiceForDilmon();
                 SetRivalDilmonName(playerDilmonName);
+                playerDilmonHealth = 60;
+                playerDilmonBaseHealth = 60;
             }
             else if (userDilmonChoice == "2")
             {
@@ -51,6 +69,8 @@ namespace Dilmon
                 SetPlayerDilmonName("Dil");
                 ConfirmChoiceForDilmon();
                 SetRivalDilmonName(playerDilmonName);
+                playerDilmonHealth = 80;
+                playerDilmonBaseHealth = 80;
             }
             else if (userDilmonChoice == "3")
             {
@@ -60,6 +80,8 @@ namespace Dilmon
                 SetPlayerDilmonName("Gangu");
                 ConfirmChoiceForDilmon();
                 SetRivalDilmonName(playerDilmonName);
+                playerDilmonHealth = 90;
+                playerDilmonBaseHealth = 90;
             }
             else
             {
@@ -69,10 +91,11 @@ namespace Dilmon
                 Console.Clear();
                 DisplayStarters();
             }
+            RenameDilmon();
+            RivalFightIntro();
         }
         public static void RenameDilmon()
         {
-            Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("BOX: Do you want to rename your DILMON? Y/N");
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -111,19 +134,25 @@ namespace Dilmon
         {
             playerDilmonName = name;
         }
-        public static void SetRivalDilmonName(string name)
+        public static void SetRivalDilmonName(string playerDilmonName)
         {
             if (playerDilmonName == "Swiffy")
             {
                 rivalDilmonName = "Dil";
+                rivalDilmonHealth = 80;
+                rivalDilmonBaseHealth = 80;
             }
             else if (playerDilmonName == "Dil")
             {
                 rivalDilmonName = "Gangu";
+                rivalDilmonHealth = 90;
+                rivalDilmonBaseHealth = 90;
             }
             else if (playerDilmonName == "Gangu")
             {
                 rivalDilmonName = "Swiffy";
+                rivalDilmonHealth = 60;
+                rivalDilmonBaseHealth = 60;
             }
         }
         public string GetPlayerDilmonName()
@@ -179,6 +208,291 @@ namespace Dilmon
             1. {playerDilmonMove1}  2. {playerDilmonMove2}
             3. {playerDilmonMove3}  4. {playerDilmonMove4}
             """);
+        }
+        public static void SetRivalDilmonMoves()
+        {
+            if (rivalDilmonName == "Swiffy")
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                rivalDilmonMove1 = "Swift Sweep"; //normal type airial attack 
+                rivalDilmonMove2 = "Leach Claw"; //grass type move that does damage and heals the user 
+                rivalDilmonMove3 = "Tackle"; //basic normal type move
+                rivalDilmonMove4 = "Photosynthesis"; //grass type move - takes a turn to heal (cannot do damage)
+            }
+            else if (rivalDilmonName == "Dil")
+            {
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                rivalDilmonMove1 = "Tackle"; //basic normal type move
+                rivalDilmonMove2 = "Rainy Skies"; //water type move - sets the weather to rainy and gives all water type moves a boost
+                rivalDilmonMove3 = "Flop"; //water type move (no type other than water DILMON can learn this move) - raises user's defense and atack at the risk of falling asleep
+                rivalDilmonMove4 = "Coral Rain"; //water type move - like stelth rock - any time a new DILMON enters they take damage (unavoidable but lasts for 4 turns)
+            }
+            else if (rivalDilmonName == "Gangu")
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                rivalDilmonMove1 = "Tackle"; //basic normal type move
+                rivalDilmonMove2 = "Flaming Boxer"; //Fire type move that boosts the user's fire type attacks
+                rivalDilmonMove3 = "Meteor Punch"; //Fire type move (high crit chance but cannot be used twice in a row)
+                rivalDilmonMove4 = "Ash Construct"; // Fire type move that boosts atk pwr but decreases speed
+            }
+        }
+        public static void EnimyAttack()
+        {
+            enimyChanceForMiss = rnd.Next(1, 201);
+            enemyMoveSelect = rnd.Next(1, 5);
+            if (enimyChanceForMiss == 1)
+            {
+                Console.WriteLine($"{rivalDilmonName} missed!");
+            }
+            else
+            {
+                switch (enemyMoveSelect)
+                {
+                    case 1:
+                        Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove1}");
+                        break;
+                    case 2:
+                        Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove2}");
+                        break;
+                    case 3:
+                        Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove3}");
+                        break;
+                    case 4:
+                        Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove4}");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        }
+        public static void DisplayHealth()
+        {
+            double playerDilmonHealthPercent = (playerDilmonHealth / playerDilmonBaseHealth) * 100;
+            double rivalDilmonHealthPercent = (rivalDilmonHealth / rivalDilmonBaseHealth) * 100;
+            if (playerDilmonHealthPercent == 100)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n████████████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 90)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n██████████████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 80)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n████████████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 70)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n██████████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 60)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n███████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("█████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 50)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n██████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 40)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 30)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n██████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 20)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("████████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 10)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n██");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██████████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 1)
+            {
+                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($" {playerDilmonHealth}");
+                Console.Write("\n█");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("███████████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.WriteLine("Your Dilmon has fainted...");
+            }
+            ////////////////////////////////////////////////////////
+            Console.WriteLine($"{rivalDilmonName}");
+            if (rivalDilmonHealthPercent == 100)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\n████████████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 90)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\n██████████████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 80)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\n████████████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 70)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\n██████████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 60)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\n███████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("█████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 50)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("\n██████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 40)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("\n████████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 30)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("\n██████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 20)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("\n████");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("████████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 10)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\n██");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("██████████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\n█");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write("███████████████████");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.WriteLine($"You have Defeted the {rivalDilmonName}!");
+            }
+        }
+        public static void RivalFightIntro()
+        {
+            Console.WriteLine("Jeff: But before you leave...");
+            Thread.Sleep(2000);
+            Console.WriteLine("You should meet my nephew.");
+            Thread.Sleep(2000);
+            Console.WriteLine("His name is James.");
+            Thread.Sleep(2000);
+            Console.WriteLine("And one last thing...");
+            Console.WriteLine("Here's what I call a Pocket Box. \nIt keeps track of every DILMON you encounter and catch.");
+            Thread.Sleep(2000);
+            Console.WriteLine("*You accept the Pocket Box and put it in your bag. And you turn to leave*");
+            Thread.Sleep(2000);
+            Console.WriteLine("James: Hey! Wait up!");
+            Thread.Sleep(1000);
+            Console.WriteLine("What? You're gonna walk away without a battle?");
+            Thread.Sleep(3000);
+            // Begin the fight sequence!!!
         }
     }
 }

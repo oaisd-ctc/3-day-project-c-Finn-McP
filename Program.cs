@@ -9,7 +9,7 @@ public class Program
         Console.WriteLine("Welcome to the adventures of DILMON! Please be patient as the game loads.\n");
         Thread.Sleep(3000);
         Console.Clear();
-        introTimer();
+        //introTimer();
         Console.Clear();
         beginningThing();
     }
@@ -165,7 +165,7 @@ public class Program
                 Console.WriteLine("Ok, that's is it man!");
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Thread.Sleep(2000);
-                Console.WriteLine("*Jeff proceeds to summon {insert Dilmon}, Jeff ends your run *");
+                Console.WriteLine("*Jeff proceeds to summon a dilmon called Yondu, Jeff ends your run *");
             }
         }
         else if (userInput == "3")
