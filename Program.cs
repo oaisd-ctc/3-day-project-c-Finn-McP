@@ -109,8 +109,7 @@ public class Program
                 Dilmon.DisplayStarters();
                 Dilmon.RenameDilmon(); 
                 Dilmon.DisplayDilmonMoves();
-                BattleScene.treeLeaves();
-                BattleScene.treeBark();
+                BattleScene.treeThing();
             }
             else if(userJeff == "2")
             {

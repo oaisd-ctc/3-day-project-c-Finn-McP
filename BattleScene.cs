@@ -2,29 +2,36 @@ namespace Dilmon;
 
 public class BattleScene
 {
-    public static void treeLeaves()
+    public static void treeThing()
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("""
-                  /\
-                /    \
-              /_      _\
-                /     \
-              /         \
-            /_           _\
-              /         \
-            /             \
-          /                 \
-        /_____________________\
+        Console.Write("""
+                  /\                          
+                /    \                        
+              /_      _\                      
+                /     \                       
+              /         \                     
+            /_           _\                   
+              /         \                     
+            /             \                   
+          /                 \                 
+        /_____________________\               
+                |     |                       
+                |     |                       
+                |_____|                       
         """);
     }
-    public static void treeBark()
+    public static void houseThing()
     {
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.WriteLine("""
-                |     |
-                |     |
-                |_____|
+                     ___
+                   /     \
+                 /         \
+          _____/             \_____
+              |               |
+              |               |
+              |               |
+              |______| |______|
         """);
     }
 }
