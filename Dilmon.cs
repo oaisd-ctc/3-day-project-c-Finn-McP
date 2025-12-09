@@ -6,11 +6,12 @@ namespace Dilmon
         public bool isShiny;
         private static string playerDilmonName = " ";
         private static string rivalDilmonName = " ";
-        public static string playersMonNameToDiplay = " ";
+        public static string playersMonNameToDisplay = " ";
         public static Random rnd = new Random();
         public static int chancForCrit = rnd.Next(1, 101);
+        public static int enemyChancForCrit = rnd.Next(1, 101);
         public static int chanceForMiss = rnd.Next(1, 201);
-        public static int enimyChanceForMiss = rnd.Next(1, 201);
+        public static int enemyChanceForMiss = rnd.Next(1, 201);
         public static int chanceForStatusEffect = rnd.Next(1, 11);
         public static int enemyMoveSelect = rnd.Next(1, 5);
         public static double playerDilmonHealth = 100;
@@ -21,8 +22,9 @@ namespace Dilmon
         public static string rivalDilmonMove2 = "";
         public static string rivalDilmonMove3 = "";
         public static string rivalDilmonMove4 = "";
-        public double strengthMultiplyer = 1;
-
+        public static double strengthMultiplyer = 1;
+        public static double enemyStrengthMultiplyer = 1;
+        public static double waterATKMult = 1;
         public Dilmon()
         {
         }
@@ -106,17 +108,17 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("What would you like to rename your DILMON to?\n");
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                playersMonNameToDiplay = Console.ReadLine();
+                playersMonNameToDisplay = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Are you sure you want to rename {playerDilmonName} to {playersMonNameToDiplay}? Y/N");
+                Console.WriteLine($"Are you sure you want to rename {playerDilmonName} to {playersMonNameToDisplay}? Y/N");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 string yesNoForNewName = Console.ReadLine();
                 if (yesNoForNewName == "y")
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine($"Jeff: Great choice! Your {playerDilmonName} has been renamed to {playersMonNameToDiplay}!");
+                    Console.WriteLine($"Jeff: Great choice! Your {playerDilmonName} has been renamed to {playersMonNameToDisplay}!");
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine($"BOX: Great! \n{playersMonNameToDiplay} has joined your party!");
+                    Console.WriteLine($"BOX: Great! \n{playersMonNameToDisplay} has joined your party!");
                 }
                 else
                 {
@@ -125,9 +127,9 @@ namespace Dilmon
             }
             else
             {
-                playersMonNameToDiplay = playerDilmonName;
+                playersMonNameToDisplay = playerDilmonName;
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine($"BOX: Great! \n{playersMonNameToDiplay} has joined your party!");
+                Console.WriteLine($"BOX: Great! \n{playersMonNameToDisplay} has joined your party!");
             }
         }
         public static void SetPlayerDilmonName(string name)
@@ -209,14 +211,142 @@ namespace Dilmon
             3. {playerDilmonMove3}  4. {playerDilmonMove4}
             """);
         }
+        public static void PlayerTurn()
+        {
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("""
+            1. Fight    2. Bag
+            3. DILMON   3. Run
+            """);
+            string userFightAction = Console.ReadLine();
+            if (userFightAction == "1")
+            {
+                double fireTypeBoost = 1;
+                DisplayDilmonMoves();
+                Console.WriteLine("Press eneter to go back.");
+                string userMoveAction = Console.ReadLine();
+                if (userMoveAction == "1")
+                {
+                    // Console.WriteLine("It's super effective!");
+                    if (playerDilmonName == "Swiffy")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Swift Sweep.");
+                        rivalDilmonHealth -= (10 * strengthMultiplyer);
+                    }
+                    else if (playerDilmonName == "Dil")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Tackle.");
+                        rivalDilmonHealth -= (10 * strengthMultiplyer);
+                    }
+                    else if (playerDilmonName == "Gangu")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Tackle.");
+                        rivalDilmonHealth -= (10 * strengthMultiplyer);
+                    }
+                }
+                else if (userMoveAction == "2")
+                {
+                    if (playerDilmonName == "Swiffy")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Leach Claw.");
+                        rivalDilmonHealth -= (10 * strengthMultiplyer);
+                        playerDilmonHealth += (10 * strengthMultiplyer);
+                    }
+                    else if (playerDilmonName == "Dil")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Rainy Skies.");
+                        Console.WriteLine("The weather changes and it begins to rain.");
+                        waterATKMult += 0.1;
+                    }
+                    else if (playerDilmonName == "Gangu")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Flaming Boxer.");
+                        Console.WriteLine($"{playersMonNameToDisplay}'s fire type ATKs rose.");
+                        fireTypeBoost += 0.1;
+                    }
+                }
+                else if (userMoveAction == "3")
+                {
+                    if (playerDilmonName == "Swiffy")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Leach Tackle.");
+                        rivalDilmonHealth -= (10 * strengthMultiplyer);
+                    }
+                    else if (playerDilmonName == "Dil")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Flop.");
+                        Console.WriteLine($"{playersMonNameToDisplay}'s water type ATK rose sharpley.");
+                        strengthMultiplyer += 0.5;
+                    }
+                    else if (playerDilmonName == "Gangu")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Meteor Punch.");
+                        int meteorPunchCritChance = rnd.Next(1, 21);
+                        if (meteorPunchCritChance == 1)
+                        {
+                            Console.WriteLine("IT'S A CRIT!");
+                            rivalDilmonHealth -= (15 * 2.25);
+                        }
+                        else
+                        {
+                            rivalDilmonHealth -= (15 * strengthMultiplyer);
+                        }
+                    }
+                }
+                else if (userMoveAction == "4")
+                {
+                    if (playerDilmonName == "Swiffy")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Photosynthesis.");
+                        playerDilmonHealth = playerDilmonBaseHealth;
+                    }
+                    else if (playerDilmonName == "Dil")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Coral Rain.");
+                        Console.WriteLine("The weather changes and it begins to rain.");
+                        waterATKMult += 0.1;
+                    }
+                    else if (playerDilmonName == "Gangu")
+                    {
+                        Console.WriteLine($"{playersMonNameToDisplay} uses Ash Construct.");
+                        Console.WriteLine($"{playersMonNameToDisplay}'s fire type ATKs rose.");
+                        fireTypeBoost += 0.1;
+                    }
+                }
+                else
+                {
+                    Console.Clear();
+                }
+            }
+            else if (userFightAction == "2")
+            {
+                Console.WriteLine("You open your bag to see if anything is in there.");
+                Thread.Sleep(2000);
+                Console.WriteLine("It's empty");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+            else if (userFightAction == "3")
+            {
+                Console.WriteLine("You have no other DILMON.");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("You cannot do that at this time.");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+        }
         public static void SetRivalDilmonMoves()
         {
             if (rivalDilmonName == "Swiffy")
             {
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
-                rivalDilmonMove1 = "Swift Sweep"; //normal type airial attack 
+                rivalDilmonMove1 = "Tackle"; //normal type airial attack 
                 rivalDilmonMove2 = "Leach Claw"; //grass type move that does damage and heals the user 
-                rivalDilmonMove3 = "Tackle"; //basic normal type move
+                rivalDilmonMove3 = "Swift Sweep"; //basic normal type move
                 rivalDilmonMove4 = "Photosynthesis"; //grass type move - takes a turn to heal (cannot do damage)
             }
             else if (rivalDilmonName == "Dil")
@@ -236,29 +366,88 @@ namespace Dilmon
                 rivalDilmonMove4 = "Ash Construct"; // Fire type move that boosts atk pwr but decreases speed
             }
         }
-        public static void EnimyAttack()
+        public static void EnemyAttack()
         {
-            enimyChanceForMiss = rnd.Next(1, 201);
+            enemyChancForCrit = rnd.Next(1, 101);
+            enemyChanceForMiss = rnd.Next(1, 201);
             enemyMoveSelect = rnd.Next(1, 5);
-            if (enimyChanceForMiss == 1)
+            if (enemyChanceForMiss == 1)
             {
                 Console.WriteLine($"{rivalDilmonName} missed!");
             }
             else
             {
+                double fireTypeBoost = 1;
                 switch (enemyMoveSelect)
                 {
                     case 1:
                         Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove1}");
+                        playerDilmonHealth -= (10 * enemyStrengthMultiplyer);
                         break;
                     case 2:
                         Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove2}");
+                        if (rivalDilmonMove2 == "Leach Claw")
+                        {
+                            playerDilmonHealth -= (10 * enemyStrengthMultiplyer);
+                            rivalDilmonHealth += (10 * enemyStrengthMultiplyer);
+                            while (rivalDilmonHealth > rivalDilmonBaseHealth)
+                            {
+                                rivalDilmonHealth --;
+                            }
+                        }
+                        else if (rivalDilmonMove2 == "Rainy Skies")
+                        {
+                            Console.WriteLine("The weather changes and it begins to rain.");
+                            waterATKMult += 0.1;
+                        }
+                        else if (rivalDilmonMove2 == "Flaming Boxer")
+                        {
+                            Console.WriteLine("The opposing Gangu's fire ATK rose.");
+                            fireTypeBoost += 0.1;
+                        }
                         break;
                     case 3:
                         Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove3}");
+                        if (rivalDilmonMove3 == "Swift Sweep")
+                        {
+                            playerDilmonHealth -= (15 * enemyStrengthMultiplyer);
+                        }
+                        else if (rivalDilmonMove3 == "Flop")
+                        {
+                            Console.WriteLine("Dil flops around and its ATK rose sharpley.\nThe opposing Dil's DEF rose.");
+                            enemyStrengthMultiplyer += 0.5;
+                            strengthMultiplyer -= 0.1;
+                        }
+                        else if (rivalDilmonMove3 == "Meteor Punch")
+                        {
+                            int enemyMeteorPunchCritChance = rnd.Next(1, 21);
+                            if (enemyMeteorPunchCritChance == 1)
+                            {
+                                Console.WriteLine("IT'S A CRIT!");
+                                playerDilmonHealth -= (15 * 2.25);
+                            }
+                            else
+                            {
+                                playerDilmonHealth -= (15 * enemyStrengthMultiplyer);
+                            }
+                        }
                         break;
                     case 4:
                         Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove4}");
+                        if (rivalDilmonMove4 == "Photosynthesis")
+                        {
+                            Console.WriteLine("The opposing Swiffy soakes in the sun and heals to full HP");
+                            rivalDilmonHealth = rivalDilmonBaseHealth;
+                        }
+                        else if (rivalDilmonMove4 == "Coral Rain")
+                        {
+                            Console.WriteLine("The opposing Dil filled the field with coral.");
+                        }
+                        else if (rivalDilmonMove4 == "Ash Construct")
+                        {
+                            Console.WriteLine("The opposing Gangu's ATK rose. \nGangu's speed fell.");
+                            enemyStrengthMultiplyer += 0.02;
+                        }
                         break;
                     default:
                         break;
@@ -272,7 +461,7 @@ namespace Dilmon
             double rivalDilmonHealthPercent = (rivalDilmonHealth / rivalDilmonBaseHealth) * 100;
             if (playerDilmonHealthPercent == 100)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n████████████████████");
@@ -280,7 +469,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 90)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n██████████████████");
@@ -290,7 +479,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 80)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n████████████████");
@@ -300,7 +489,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 70)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n██████████████");
@@ -310,7 +499,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 60)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n███████████");
@@ -320,7 +509,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 50)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n██████████");
@@ -330,7 +519,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 40)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n████████");
@@ -340,7 +529,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 30)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n██████");
@@ -350,7 +539,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 20)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n████");
@@ -360,7 +549,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 10)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n██");
@@ -370,7 +559,7 @@ namespace Dilmon
             }
             else if (playerDilmonHealthPercent < 100 && playerDilmonHealthPercent >= 1)
             {
-                Console.Write($"\n{playersMonNameToDiplay}:");
+                Console.Write($"\n{playersMonNameToDisplay}:");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write($" {playerDilmonHealth}");
                 Console.Write("\n█");
