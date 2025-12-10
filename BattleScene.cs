@@ -2,7 +2,7 @@ namespace Dilmon;
 
 public class BattleScene
 {
-    public static void treeThing()
+    public static void TreeThing()
     {
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("""
@@ -21,7 +21,7 @@ public class BattleScene
                 |_____|                       
         """);
     }
-    public static void houseThing()
+    public static void HouseThing()
     {
         Console.WriteLine("""
                      ___
