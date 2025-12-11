@@ -108,7 +108,6 @@ public class Program
                 Thread.Sleep(1000);
                 Dilmon.DisplayStarters();
                 Dilmon.DisplayDilmonMoves();
-                BattleScene.treeThing();
             }
             else if(userJeff == "2")
             {
