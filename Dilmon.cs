@@ -95,6 +95,7 @@ namespace Dilmon
             }
             RenameDilmon();
             RivalFightIntro();
+            RivalFight();
         }
         public static void RenameDilmon()
         {
@@ -216,7 +217,7 @@ namespace Dilmon
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("""
             1. Fight    2. Bag
-            3. DILMON   3. Run
+            3. DILMON   4. Run
             """);
             string userFightAction = Console.ReadLine();
             if (userFightAction == "1")
@@ -316,6 +317,7 @@ namespace Dilmon
                 else
                 {
                     Console.Clear();
+                    RivalFight();
                 }
             }
             else if (userFightAction == "2")
@@ -325,18 +327,21 @@ namespace Dilmon
                 Console.WriteLine("It's empty");
                 Thread.Sleep(2000);
                 Console.Clear();
+                RivalFight();
             }
             else if (userFightAction == "3")
             {
                 Console.WriteLine("You have no other DILMON.");
                 Thread.Sleep(2000);
                 Console.Clear();
+                RivalFight();
             }
             else
             {
                 Console.WriteLine("You cannot do that at this time.");
                 Thread.Sleep(2000);
                 Console.Clear();
+                RivalFight();
             }
         }
         public static void SetRivalDilmonMoves()
@@ -368,6 +373,7 @@ namespace Dilmon
         }
         public static void EnemyAttack()
         {
+            SetRivalDilmonMoves();
             enemyChancForCrit = rnd.Next(1, 101);
             enemyChanceForMiss = rnd.Next(1, 201);
             enemyMoveSelect = rnd.Next(1, 5);
@@ -381,11 +387,11 @@ namespace Dilmon
                 switch (enemyMoveSelect)
                 {
                     case 1:
-                        Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove1}");
+                        Console.WriteLine($"{rivalDilmonName} used Tackle!");
                         playerDilmonHealth -= (10 * enemyStrengthMultiplyer);
                         break;
                     case 2:
-                        Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove2}");
+                        Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove2}!");
                         if (rivalDilmonMove2 == "Leach Claw")
                         {
                             playerDilmonHealth -= (10 * enemyStrengthMultiplyer);
@@ -437,7 +443,7 @@ namespace Dilmon
                         if (rivalDilmonMove4 == "Photosynthesis")
                         {
                             Console.WriteLine("The opposing Swiffy soakes in the sun and heals to full HP");
-                            rivalDilmonHealth = rivalDilmonBaseHealth;
+                            rivalDilmonHealth += 30;
                         }
                         else if (rivalDilmonMove4 == "Coral Rain")
                         {
@@ -572,11 +578,11 @@ namespace Dilmon
                 Console.WriteLine("Your Dilmon has fainted...");
             }
             ////////////////////////////////////////////////////////
-            Console.WriteLine($"{rivalDilmonName}");
+            Console.Write($"\n{rivalDilmonName}:");
             if (rivalDilmonHealthPercent == 100)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("\n████████████████████");
+                Console.Write("\n████████████████████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 90)
@@ -584,7 +590,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("\n██████████████████");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("██");
+                Console.Write("██\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 80)
@@ -592,7 +598,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("\n████████████████");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("████");
+                Console.Write("████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 70)
@@ -600,7 +606,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("\n██████████████");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("██████");
+                Console.Write("██████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 60)
@@ -608,7 +614,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("\n███████████");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("█████████");
+                Console.Write("█████████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 50)
@@ -616,7 +622,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("\n██████████");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("██████████");
+                Console.Write("██████████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 40)
@@ -624,7 +630,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("\n████████");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("████████████");
+                Console.Write("████████████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 30)
@@ -632,7 +638,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("\n██████");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("██████████████");
+                Console.Write("██████████████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 20)
@@ -640,7 +646,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("\n████");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("████████████████");
+                Console.Write("████████████████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 10)
@@ -648,7 +654,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("\n██");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("██████████████████");
+                Console.Write("██████████████████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else if (rivalDilmonHealthPercent < 100 && rivalDilmonHealthPercent >= 1)
@@ -656,7 +662,7 @@ namespace Dilmon
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("\n█");
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("███████████████████");
+                Console.Write("███████████████████\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else
@@ -677,11 +683,31 @@ namespace Dilmon
             Thread.Sleep(2000);
             Console.WriteLine("*You accept the Pocket Box and put it in your bag. And you turn to leave*");
             Thread.Sleep(2000);
+            Console.WriteLine(". . .");
+            Thread.Sleep(2000);
             Console.WriteLine("James: Hey! Wait up!");
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             Console.WriteLine("What? You're gonna walk away without a battle?");
             Thread.Sleep(3000);
             // Begin the fight sequence!!!
+        }
+        public static void RivalFight()
+        {
+            Console.Clear();
+            Console.WriteLine($"*James let's out his {rivalDilmonName} and chalenges you to a battle.*");
+            Console.WriteLine($"{Program.userName}: GO, {playersMonNameToDisplay}!");
+            Thread.Sleep(3000);
+            while (playerDilmonHealth > 0)
+            {
+                Console.Clear();
+                DisplayHealth();
+                Thread.Sleep(1000);
+                PlayerTurn();
+                Thread.Sleep(1000);
+                EnemyAttack();
+                Thread.Sleep(3000);
+            }
+            Console.WriteLine("Thank you for playing our game!");
         }
     }
 }
