@@ -107,7 +107,6 @@ public class Program
                 Console.WriteLine("You can choose any of these.");
                 Thread.Sleep(1000);
                 Dilmon.DisplayStarters();
-                Dilmon.RenameDilmon(); 
                 Dilmon.DisplayDilmonMoves();
                 BattleScene.treeThing();
             }
