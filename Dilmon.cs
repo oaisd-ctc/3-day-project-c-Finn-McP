@@ -67,6 +67,8 @@ namespace Dilmon
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("BOX: Dil is the friendly fish DILMON. \nAre you sure you want to choose Dil? Y/N"); // evolves into Dilbert then Dilboretor
+                Console.WriteLine("Here is Dil.");
+                Program.dilEvolution1();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 SetPlayerDilmonName("Dil");
                 ConfirmChoiceForDilmon();

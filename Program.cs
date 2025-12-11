@@ -109,6 +109,7 @@ public class Program
                 Dilmon.DisplayStarters();
                 Dilmon.RenameDilmon(); 
                 Dilmon.DisplayDilmonMoves();
+                BattleScene.treeThing();
             }
             else if(userJeff == "2")
             {
@@ -332,6 +333,119 @@ public class Program
         |    88      88    |
         |__________________|
         """);
+    }
+    public static void dilEvolution1()
+    {
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("""
+         _                
+        | \______/\_____  
+        |            O  \ 
+        |                C
+        |  _|__|_  _____/ 
+        |_/      \/       
+        """);
+    }
+    public static void dilEvolution2()
+    {
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("""
+         __
+        || \______/\__________
+        ||                 O  \
+        ||                     C
+        ||  _||__||__  _______/
+        ||_/         \/
+        """);
+    }
+    public static void dilEvolution3()
+    {
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("""
+                               _____
+                              /  ___|-----
+         ___        __        | /
+        ||| \______//\\_______||____
+        |||                      O  \
+        |||                          C
+        |||  _|||__|||       _||____/
+        |||_/         \_\_/_/ |\___       
+                              \____|-----
+                              
+        """);
+    }
+    public static void swiffyEvolution1()
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("""
+                        \________
+                     ___\     __ |\
+                    |        | o|| >
+                    _\_          |/
+           _________|            /___________
+          /        /            /            |
+         /________/            /__          /
+                 /            /   \____    |
+                |            |___  _|  \___|
+                |           /    \|
+                /~~~~~~~~~~/
+        """);       
+    }
+    public static void swiffyEvolution2()
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("""
+        
+        """);       
+    }
+    public static void swiffyEvolution3()
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("""
+        
+        """);       
+    }
+    public static void ganguEvolution1()
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("""
+                                   __      __
+                                  |  |    /  |
+                                  |  |___|   |
+                                  \          \
+                         _________/           \__
+                        /                        \
+                      /                          /
+                     /                     ____/
+                    |                     |
+                   /                       \
+                  /                        |
+                 /                        /__
+                |                    |       \
+                |                    |\__     |
+                \         /     __   |   \___/
+                 \       /_    /  \  /
+                  \      | |   |   | |
+                   |    \  |   |___| /_______
+                   \     |   \_____|_________>
+                    \    \
+                     \    \___________________
+                      \______________________/     
+        """);    
+    }
+    public static void ganguEvolution2()
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("""
+        
+        """);    
+    }
+    public static void ganguEvolution3()
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("""
+        
+        """);    
     }
     public static void dotTimer()
     {
