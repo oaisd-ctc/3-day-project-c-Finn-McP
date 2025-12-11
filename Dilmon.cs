@@ -444,7 +444,7 @@ namespace Dilmon
                         Console.WriteLine($"{rivalDilmonName} used {rivalDilmonMove4}");
                         if (rivalDilmonMove4 == "Photosynthesis")
                         {
-                            Console.WriteLine("The opposing Swiffy soakes in the sun and heals to full HP");
+                            Console.WriteLine("The opposing Swiffy soaks in the sun and heals 30 HP");
                             rivalDilmonHealth += 30;
                         }
                         else if (rivalDilmonMove4 == "Coral Rain")
@@ -578,6 +578,12 @@ namespace Dilmon
             else
             {
                 Console.WriteLine("Your Dilmon has fainted...");
+                Thread.Sleep(3000);
+                Console.WriteLine("Thank you for playing our game!");
+                Thread.Sleep(2000);
+                Console.WriteLine("Press ctrl C to end the game or if you want to play again press enter.");
+                Console.ReadLine();
+                Program.beginningThing();
             }
             ////////////////////////////////////////////////////////
             Console.Write($"\n{rivalDilmonName}:");
@@ -670,6 +676,11 @@ namespace Dilmon
             else
             {
                 Console.WriteLine($"You have Defeted the {rivalDilmonName}!");
+                Thread.Sleep(3000);
+                Console.WriteLine("Thank you for playing our game!");
+                Thread.Sleep(2000);
+                Console.WriteLine("Press ctrl C to end the game or if you want to play again press enter.");
+                Console.ReadLine();
             }
         }
         public static void RivalFightIntro()
@@ -699,17 +710,25 @@ namespace Dilmon
             Console.WriteLine($"*James let's out his {rivalDilmonName} and chalenges you to a battle.*");
             Console.WriteLine($"{Program.userName}: GO, {playersMonNameToDisplay}!");
             Thread.Sleep(3000);
-            while (playerDilmonHealth > 0)
+            if (playerDilmonHealth > 0)
             {
-                Console.Clear();
-                DisplayHealth();
-                Thread.Sleep(1000);
-                PlayerTurn();
-                Thread.Sleep(1000);
-                EnemyAttack();
-                Thread.Sleep(3000);
+                while (playerDilmonHealth > 0)
+                {
+                    Console.Clear();
+                    DisplayHealth();
+                    Thread.Sleep(1000);
+                    PlayerTurn();
+                    Thread.Sleep(1000);
+                    EnemyAttack();
+                    Thread.Sleep(3000); 
+                }
             }
+            Console.WriteLine($"{playersMonNameToDisplay} has fainted!");
+            Thread.Sleep(3000);
             Console.WriteLine("Thank you for playing our game!");
+            Thread.Sleep(2000);
+            Console.WriteLine("Press ctrl C to end the game.");
+            Console.ReadLine();
         }
     }
 }
