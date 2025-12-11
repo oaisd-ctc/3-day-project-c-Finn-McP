@@ -56,6 +56,8 @@ namespace Dilmon
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("BOX: Swiffy is the mossy swiflet DILMON. \nAre you sure you want to choose Swiffy? Y/N"); // evolves into Swiftler then Swifton
+                Console.WriteLine("Here is Swiffy.");
+                Program.swiffyEvolution1();
                 Console.ForegroundColor = ConsoleColor.Green;
                 SetPlayerDilmonName("Swiffy");
                 ConfirmChoiceForDilmon();
@@ -80,6 +82,8 @@ namespace Dilmon
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("BOX: Gangu is the firey kangaroo DILMON. \nAre you sure you want to choose Gangu? Y/N"); // evolves into Gangubud then Gangunade
+                Console.WriteLine("Here is Gangu.");
+                Program.ganguEvolution1();
                 Console.ForegroundColor = ConsoleColor.Red;
                 SetPlayerDilmonName("Gangu");
                 ConfirmChoiceForDilmon();
@@ -187,26 +191,26 @@ namespace Dilmon
             if (playerDilmonName == "Swiffy")
             {
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
-                playerDilmonMove1 = "Swift Sweep"; //normal type airial attack 
-                playerDilmonMove2 = "Leach Claw"; //grass type move that does damage and heals the user 
-                playerDilmonMove3 = "Tackle"; //basic normal type move
-                playerDilmonMove4 = "Photosynthesis"; //grass type move - takes a turn to heal (cannot do damage)
+                playerDilmonMove1 = "Swift Sweep | Normal type Arial Attack"; //normal type airial attack 
+                playerDilmonMove2 = "Leach Claw | Grass type move that deals damage and heals the user"; //grass type move that does damage and heals the user 
+                playerDilmonMove3 = "Tackle | Basic Normal type move"; //basic normal type move
+                playerDilmonMove4 = "Photosynthesis | Grass type move that heals the user"; //grass type move - takes a turn to heal (cannot do damage)
             }
             else if (playerDilmonName == "Dil")
             {
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
-                playerDilmonMove1 = "Tackle"; //basic normal type move
-                playerDilmonMove2 = "Rainy Skies"; //water type move - sets the weather to rainy and gives all water type moves a boost
-                playerDilmonMove3 = "Flop"; //water type move (no type other than water DILMON can learn this move) - raises user's defense and atack at the risk of falling asleep
-                playerDilmonMove4 = "Coral Rain"; //water type move - like stelth rock - any time a new DILMON enters they take damage (unavoidable but lasts for 4 turns)
+                playerDilmonMove1 = "Tackle | Basic Normal type move"; //basic normal type move
+                playerDilmonMove2 = "Rainy Skies | Water type move that sets the weather to rainy and boosts all water type moves"; //water type move - sets the weather to rainy and gives all water type moves a boost
+                playerDilmonMove3 = "Flop | Water type move that only Dil can learn that increases damage and damage reduction"; //water type move (no type other than water DILMON can learn this move) - raises user's defense and atack at the risk of falling asleep
+                playerDilmonMove4 = "Coral Rain| Water type move that damages a dilmon upon entering the battle"; //water type move - like stelth rock - any time a new DILMON enters they take damage (unavoidable but lasts for 4 turns)
             }
             else if (playerDilmonName == "Gangu")
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                playerDilmonMove1 = "Tackle"; //basic normal type move
-                playerDilmonMove2 = "Flaming Boxer"; //Fire type move that boosts the user's fire type attacks
-                playerDilmonMove3 = "Meteor Punch"; //Fire type move (high crit chance but cannot be used twice in a row)
-                playerDilmonMove4 = "Ash Construct"; // Fire type move that boosts atk pwr but decreases speed
+                playerDilmonMove1 = "Tackle | Basic Normal type move"; //basic normal type move
+                playerDilmonMove2 = "Flaming Boxer | Fire type move that boosts the users fire type attacks"; //Fire type move that boosts the user's fire type attacks
+                playerDilmonMove3 = "Meteor Punch | Fire type move that has a high crit chance, but can only be used once"; //Fire type move (high crit chance but cannot be used twice in a row)
+                playerDilmonMove4 = "Ash Construct | Fire type move that boosts attack power but decreases speed"; // Fire type move that boosts atk pwr but decreases speed
             }
             Console.WriteLine($""" 
             Moves:
@@ -226,7 +230,7 @@ namespace Dilmon
             {
                 double fireTypeBoost = 1;
                 DisplayDilmonMoves();
-                Console.WriteLine("Press eneter to go back.");
+                Console.WriteLine("Press enter to go back.");
                 string userMoveAction = Console.ReadLine();
                 if (userMoveAction == "1")
                 {
@@ -577,6 +581,7 @@ namespace Dilmon
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Your Dilmon has fainted...");
             }
             ////////////////////////////////////////////////////////
@@ -669,11 +674,13 @@ namespace Dilmon
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine($"You have Defeted the {rivalDilmonName}!");
             }
         }
         public static void RivalFightIntro()
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("Jeff: But before you leave...");
             Thread.Sleep(2000);
             Console.WriteLine("You should meet my nephew.");
@@ -687,6 +694,7 @@ namespace Dilmon
             Thread.Sleep(2000);
             Console.WriteLine(". . .");
             Thread.Sleep(2000);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("James: Hey! Wait up!");
             Thread.Sleep(2000);
             Console.WriteLine("What? You're gonna walk away without a battle?");
@@ -696,7 +704,9 @@ namespace Dilmon
         public static void RivalFight()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine($"*James let's out his {rivalDilmonName} and chalenges you to a battle.*");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"{Program.userName}: GO, {playersMonNameToDisplay}!");
             Thread.Sleep(3000);
             while (playerDilmonHealth > 0)
@@ -709,6 +719,7 @@ namespace Dilmon
                 EnemyAttack();
                 Thread.Sleep(3000);
             }
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Thank you for playing our game!");
         }
     }
